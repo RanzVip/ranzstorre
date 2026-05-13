@@ -38,7 +38,7 @@
             color: white; padding: 10px 18px; border-radius: 100px;
             text-decoration: none; font-size: 11px; font-weight: 800;
             box-shadow: 0 8px 20px rgba(0, 136, 204, 0.3);
-            z-index: 100; border: 1px solid rgba(255,255,255,0.2);
+            z-index: 999; border: 1px solid rgba(255,255,255,0.2);
             display: flex; align-items: center; gap: 8px; text-transform: uppercase;
         }
 
@@ -64,6 +64,7 @@
             border: 1px solid var(--border);
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             position: relative; overflow: hidden;
+            z-index: 1;
         }
 
         .video-container {
@@ -72,10 +73,12 @@
             background: #000;
             aspect-ratio: 16/9;
             position: relative;
+            z-index: 0;
+            pointer-events: none; /* Supaya video tidak menghalangi klik */
         }
         video { width: 100%; height: 100%; object-fit: cover; }
 
-        .product-info { margin-bottom: 20px; }
+        .product-info { margin-bottom: 20px; position: relative; z-index: 2; }
         .product-label { 
             font-size: 10px; font-weight: 800; color: var(--primary); 
             margin-bottom: 6px; display: block; text-transform: uppercase; letter-spacing: 2px;
@@ -83,8 +86,7 @@
         .product-title { font-size: 20px; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
         .product-desc { font-size: 12px; color: var(--text-dim); margin-top: 5px; }
 
-        /* PERBAIKAN SELECT & OPTION */
-        .select-wrapper { position: relative; margin-bottom: 15px; }
+        .select-wrapper { position: relative; margin-bottom: 15px; z-index: 5; }
         .select-wrapper::after {
             content: '▼'; position: absolute; right: 20px; top: 50%;
             transform: translateY(-50%); font-size: 12px; color: var(--primary);
@@ -93,30 +95,26 @@
 
         select { 
             width: 100%; padding: 16px 20px; border-radius: 18px; 
-            background: rgba(255, 255, 255, 0.05); 
-            color: #ffffff; /* Memastikan teks pilihan berwarna putih */
+            background: rgba(255, 255, 255, 0.1); 
+            color: #ffffff;
             border: 1px solid var(--border);
             font-size: 14px; outline: none; appearance: none;
             cursor: pointer; font-weight: 600;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            position: relative; z-index: 10;
         }
-
-        /* Styling isi menu dropdown */
-        select option {
-            background-color: #0f172a; /* Warna background dropdown */
-            color: #ffffff; /* Warna teks di dalam dropdown */
-            padding: 10px;
-        }
-
-        select:focus { border-color: var(--primary); background: rgba(251, 191, 36, 0.1); }
+        select option { background-color: #0f172a; color: #ffffff; }
 
         .btn-primary { 
             width: 100%; background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            color: #020617; border: none; padding: 16px; border-radius: 18px;
+            color: #020617 !important; border: none; padding: 18px; border-radius: 18px;
             font-weight: 800; cursor: pointer; font-family: 'Orbitron', sans-serif;
             text-transform: uppercase; font-size: 12px; letter-spacing: 1px;
             box-shadow: 0 10px 20px rgba(245, 158, 11, 0.2);
+            position: relative; z-index: 20; /* Z-index tertinggi agar bisa diklik */
+            display: block;
         }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(245, 158, 11, 0.4); }
+        .btn-primary:active { transform: scale(0.95); }
 
         .receipt {
             background: #fff; color: #0f172a; padding: 30px; border-radius: 20px;
@@ -128,7 +126,6 @@
             padding: 16px 20px; border-radius: 20px; margin-bottom: 12px;
             display: flex; align-items: center; justify-content: space-between;
         }
-        .pay-logo { font-weight: 800; font-size: 14px; }
         .pay-number { color: var(--primary); font-size: 16px; font-weight: 800; }
 
         .qris-container {
@@ -153,7 +150,7 @@
 
         <div class="card">
             <div class="video-container">
-                <video autoplay muted loop playsinline poster="thumb1.jpg">
+                <video autoplay muted loop playsinline>
                     <source src="obb_video.mp4" type="video/mp4">
                 </video>
             </div>
@@ -170,12 +167,12 @@
                     <option value="OBB MOD (Permanent)|200.000">👑 PERMANENT - Rp 200.000</option>
                 </select>
             </div>
-            <button onclick="checkout('obb-select')" class="btn-primary">Beli Sekarang</button>
+            <button type="button" onclick="checkout('obb-select')" class="btn-primary">Beli Sekarang</button>
         </div>
 
         <div class="card">
             <div class="video-container">
-                <video autoplay muted loop playsinline poster="thumb2.jpg">
+                <video autoplay muted loop playsinline>
                     <source src="esp_video.mp4" type="video/mp4">
                 </video>
             </div>
@@ -194,12 +191,12 @@
                     <option value="WH/ESP (Full Season)|250.000">🛡️ FULL SEASON - Rp 250.000</option>
                 </select>
             </div>
-            <button onclick="checkout('wh-select')" class="btn-primary">Beli Sekarang</button>
+            <button type="button" onclick="checkout('wh-select')" class="btn-primary">Beli Sekarang</button>
         </div>
 
         <div class="card">
             <div class="video-container">
-                <video autoplay muted loop playsinline poster="thumb3.jpg">
+                <video autoplay muted loop playsinline>
                     <source src="skin_video.mp4" type="video/mp4">
                 </video>
             </div>
@@ -218,7 +215,7 @@
                     <option value="Mod Skin (Full Season)|150.000">🛡️ FULL SEASON - Rp 150.000</option>
                 </select>
             </div>
-            <button onclick="checkout('skin-select')" class="btn-primary">Beli Sekarang</button>
+            <button type="button" onclick="checkout('skin-select')" class="btn-primary">Beli Sekarang</button>
         </div>
 
         <div class="card">
@@ -234,7 +231,7 @@
                     <option value="Mod Request (1 Season)|70.000">✨ 1 SEASON - Rp 70.000</option>
                 </select>
             </div>
-            <button onclick="checkout('req-select')" class="btn-primary">Request Sekarang</button>
+            <button type="button" onclick="checkout('req-select')" class="btn-primary">Request Sekarang</button>
         </div>
     </div>
 
@@ -258,17 +255,16 @@
         </div>
 
         <div class="pay-list">
-            <div class="pay-card"><span class="pay-logo" style="color: #2997ff;">DANA</span> <span class="pay-number">087872929545</span></div>
-            <div class="pay-card"><span class="pay-logo" style="color: #00aa13;">GOPAY</span> <span class="pay-number">087872929545</span></div>
-            <div class="pay-card"><span class="pay-logo" style="color: #a855f7;">OVO</span> <span class="pay-number">087872929545</span></div>
+            <div class="pay-card"><span style="color: #2997ff; font-weight: 800;">DANA</span> <span class="pay-number">087872929545</span></div>
+            <div class="pay-card"><span style="color: #00aa13; font-weight: 800;">GOPAY</span> <span class="pay-number">087872929545</span></div>
+            <div class="pay-card"><span style="color: #a855f7; font-weight: 800;">OVO</span> <span class="pay-number">087872929545</span></div>
         </div>
 
         <div class="qris-container">
             <img src="qris.jpg" alt="QRIS" class="qris-image">
-            <p style="color: #000; font-size: 9px; font-weight: 700; margin-top: 10px; text-transform: uppercase;">Scan Untuk Pembayaran Otomatis</p>
         </div>
 
-        <a id="tg-link" href="#" target="_blank" class="btn-telegram" style="background:#0088cc; color:white; text-decoration:none; display:flex; align-items:center; justify-content:center; padding:18px; border-radius:18px; font-weight:800; text-transform:uppercase; font-size:12px; gap:10px; font-family:'Orbitron';">
+        <a id="tg-link" href="#" target="_blank" class="btn-telegram" style="background:#0088cc; color:white; text-decoration:none; display:flex; align-items:center; justify-content:center; padding:18px; border-radius:18px; font-weight:800; text-transform:uppercase; font-size:12px; gap:10px; font-family:'Orbitron'; margin-top: 20px;">
             Kirim Bukti Bayar ✈️
         </a>
 
@@ -281,7 +277,7 @@
 <script>
     function checkout(id) {
         const selectElement = document.getElementById(id);
-        if (selectElement.value === "") {
+        if (!selectElement || selectElement.value === "") {
             alert("Silahkan pilih paket terlebih dahulu.");
             return;
         }
@@ -300,7 +296,6 @@
             "Produk: " + itemName + "\n" +
             "Harga: " + itemPrice + "\n\n" +
             "Saya sudah melakukan pembayaran, mohon diproses."
-            "KIRIM BUKTI PEMBAYRAN:."
         );
         document.getElementById('tg-link').href = "https://t.me/Ranzstorre?text=" + message;
 
