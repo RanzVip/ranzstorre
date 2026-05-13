@@ -30,7 +30,6 @@
 
         .container { width: 100%; max-width: 450px; position: relative; }
 
-        /* Floating Channel Button */
         .fab-channel {
             position: fixed; bottom: 30px; right: 20px;
             background: linear-gradient(135deg, #0088cc, #006699);
@@ -42,7 +41,6 @@
             text-transform: uppercase; letter-spacing: 1px;
         }
 
-        /* Modern Header */
         .header { text-align: center; margin-top: 20px; margin-bottom: 40px; }
         .header h1 { 
             font-family: 'Orbitron', sans-serif; 
@@ -57,7 +55,6 @@
         .page.active { display: block; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Elegant Card */
         .card { 
             background: var(--card-bg); backdrop-filter: blur(20px);
             border-radius: 28px; padding: 28px; margin-bottom: 25px; 
@@ -73,9 +70,7 @@
         .product-title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 5px; display: flex; align-items: center; gap: 10px; }
         .product-desc { font-size: 11px; color: var(--primary); margin-bottom: 20px; font-style: italic; display: block; }
 
-        /* Custom Dropdown Styling */
         .select-wrapper { position: relative; margin-bottom: 20px; }
-        
         .select-wrapper::after {
             content: '▼'; position: absolute; right: 20px; top: 50%;
             transform: translateY(-50%); font-size: 12px; color: var(--primary);
@@ -91,7 +86,6 @@
         }
         
         select:focus { border-color: var(--primary); background: rgba(251, 191, 36, 0.1); }
-
         option { background: #0f172a; color: #fff; padding: 10px; }
 
         .btn-primary { 
@@ -102,14 +96,12 @@
             box-shadow: 0 8px 20px rgba(245, 158, 11, 0.2);
         }
 
-        /* Receipt */
         .receipt {
             background: #fff; color: #000; padding: 35px; border-radius: 4px;
             font-family: 'Courier Prime', monospace; margin-bottom: 30px;
             clip-path: polygon(0 0, 100% 0, 100% 95%, 95% 100%, 85% 95%, 75% 100%, 65% 95%, 55% 100%, 45% 95%, 35% 100%, 25% 95%, 15% 100%, 5% 95%, 0 100%);
         }
 
-        /* Payment UI */
         .pay-card {
             background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
             padding: 18px; border-radius: 20px; margin-bottom: 10px;
@@ -121,7 +113,6 @@
         .ovo { color: #a855f7; }
         .pay-number { color: var(--primary); font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 800; }
 
-        /* QRIS Styling */
         .qris-container {
             margin-top: 25px;
             text-align: center;
@@ -175,14 +166,14 @@
 
         <div class="card">
             <span class="product-label">Visual Assist</span>
-            <div class="product-title">🌍 WALLHACK EDITION</div>
+            <div class="product-title">🌍 WALLHACK / PANEL ESP</div>
             <div class="select-wrapper">
                 <select id="wh-select">
                     <option value="" disabled selected>— PILIH SERVER & DURASI —</option>
-                    <option value="WH Global (1 Month)|150.000">🔵 GLOBAL: 1 MONTH | 150K</option>
-                    <option value="WH Global (Full Season)|280.000">🛡️ GLOBAL: FULL SEASON | 280K</option>
-                    <option value="WH Korea (1 Month)|130.000">🔴 KOREA: 1 MONTH | 130K</option>
-                    <option value="WH Korea (Full Season)|230.000">🛡️ KOREA: FULL SEASON | 230K</option>
+                    <option value="WH/ESP (1 Day)|25.000">⭐ 1 DAY : Rp 25.000</option>
+                    <option value="WH/ESP (7 Day)|50.000">⭐ 7 DAY : Rp 50.000</option>
+                    <option value="WH/ESP (30 Day)|150.000">🏷️ 30 DAY : Rp 150.000</option>
+                    <option value="WH/ESP (Full Season)|280.000">🛡️ FULL SEASON : Rp 280.000</option>
                 </select>
             </div>
             <button onclick="checkout('wh-select')" class="btn-primary">Checkout</button>
