@@ -70,7 +70,8 @@
             margin-bottom: 8px; display: block; text-transform: uppercase; letter-spacing: 2px;
         }
         
-        .product-title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .product-title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 5px; display: flex; align-items: center; gap: 10px; }
+        .product-desc { font-size: 11px; color: var(--primary); margin-bottom: 20px; font-style: italic; display: block; }
 
         /* Custom Dropdown Styling */
         .select-wrapper { position: relative; margin-bottom: 20px; }
@@ -201,6 +202,20 @@
                 </select>
             </div>
             <button onclick="checkout('skin-select')" class="btn-primary">Checkout</button>
+        </div>
+
+        <div class="card">
+            <span class="product-label">Custom Service</span>
+            <div class="product-title">🛠️ MOD REQUEST</div>
+            <span class="product-desc">Note: Bebas request fiture sesuai keinginan.</span>
+            <div class="select-wrapper">
+                <select id="req-select">
+                    <option value="" disabled selected>— PILIH DURASI REQUEST —</option>
+                    <option value="Mod Request (30 Day)|40.000">🏷️ 30 DAY : Rp 40.000</option>
+                    <option value="Mod Request (1 Season)|70.000">✨ 1 SEASON : Rp 70.000</option>
+                </select>
+            </div>
+            <button onclick="checkout('req-select')" class="btn-primary">Checkout</button>
         </div>
     </div>
 
