@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RANZSTORE | PREMIUM MODS 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&family=Poppins:wght@300;400;600;800&family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #fbbf24;
+            --accent: #f59e0b;
+            --bg: #020617;
+            --card-bg: rgba(15, 23, 42, 0.8);
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(251, 191, 36, 0.15);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background-color: var(--bg); 
+            background-image: 
+                radial-gradient(circle at top left, rgba(251, 191, 36, 0.07) 0%, transparent 50%),
+                radial-gradient(circle at bottom right, rgba(251, 191, 36, 0.07) 0%, transparent 50%);
+            color: #f1f5f9;
+            display: flex; justify-content: center; min-height: 100vh;
+            padding: 20px; overflow-x: hidden;
+        }
+
+        .container { width: 100%; max-width: 450px; position: relative; }
+
+        /* Floating Channel Button */
+        .fab-channel {
+            position: fixed; bottom: 30px; right: 20px;
+            background: linear-gradient(135deg, #0088cc, #006699);
+            color: white; padding: 12px 20px; border-radius: 50px;
+            text-decoration: none; font-size: 12px; font-weight: 800;
+            box-shadow: 0 10px 25px rgba(0, 136, 204, 0.4);
+            z-index: 100; display: flex; align-items: center; gap: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        /* Modern Header */
+        .header { text-align: center; margin-top: 20px; margin-bottom: 40px; }
+        .header h1 { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 36px; font-weight: 900; 
+            background: linear-gradient(180deg, #fff 30%, var(--primary) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            letter-spacing: 5px; filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.3));
+        }
+        .header p { color: #94a3b8; font-size: 10px; text-transform: uppercase; letter-spacing: 4px; }
+
+        .page { display: none; animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .page.active { display: block; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Elegant Card */
+        .card { 
+            background: var(--card-bg); backdrop-filter: blur(20px);
+            border-radius: 28px; padding: 28px; margin-bottom: 25px; 
+            border: 1px solid var(--border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-label { 
+            font-size: 11px; font-weight: 700; color: #64748b; 
+            margin-bottom: 8px; display: block; text-transform: uppercase; letter-spacing: 2px;
+        }
+        
+        .product-title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+
+        /* Custom Dropdown Styling */
+        .select-wrapper { position: relative; margin-bottom: 20px; }
+        
+        .select-wrapper::after {
+            content: '▼'; position: absolute; right: 20px; top: 50%;
+            transform: translateY(-50%); font-size: 12px; color: var(--primary);
+            pointer-events: none;
+        }
+
+        select { 
+            width: 100%; padding: 18px 25px; border-radius: 16px; 
+            background: rgba(255, 255, 255, 0.05); color: #fff; 
+            border: 1.5px solid rgba(251, 191, 36, 0.2);
+            font-size: 13px; outline: none; appearance: none;
+            cursor: pointer; font-weight: 600;
+        }
+        
+        select:focus { border-color: var(--primary); background: rgba(251, 191, 36, 0.1); }
+
+        option { background: #0f172a; color: #fff; padding: 10px; }
+
+        .btn-primary { 
+            width: 100%; background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #020617; border: none; padding: 18px; border-radius: 16px;
+            font-weight: 900; cursor: pointer; font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase; font-size: 13px; letter-spacing: 1px;
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.2);
+        }
+
+        /* Receipt */
+        .receipt {
+            background: #fff; color: #000; padding: 35px; border-radius: 4px;
+            font-family: 'Courier Prime', monospace; margin-bottom: 30px;
+            clip-path: polygon(0 0, 100% 0, 100% 95%, 95% 100%, 85% 95%, 75% 100%, 65% 95%, 55% 100%, 45% 95%, 35% 100%, 25% 95%, 15% 100%, 5% 95%, 0 100%);
+        }
+
+        /* Payment UI */
+        .pay-card {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            padding: 18px; border-radius: 20px; margin-bottom: 10px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .pay-logo { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 13px; letter-spacing: 1px; }
+        .dana { color: #2997ff; }
+        .gopay { color: #00aa13; }
+        .ovo { color: #a855f7; }
+        .pay-number { color: var(--primary); font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 800; }
+
+        .btn-telegram {
+            background: #0088cc; color: #fff; text-decoration: none;
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px; border-radius: 20px; font-weight: 900; margin-top: 30px;
+            text-transform: uppercase; font-size: 13px; gap: 10px;
+        }
+
+        footer { text-align: center; margin-top: 50px; font-size: 9px; color: #475569; letter-spacing: 4px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="https://t.me/Fnzaa_Storee" class="fab-channel">Join Channel ✈️</a>
+
+    <div id="product-page" class="page active">
+        <div class="header">
+            <h1>RANZSTORE</h1>
+            <p>Premium Digital Mods</p>
+        </div>
+
+        <div class="card">
+            <span class="product-label">Bypass Security</span>
+            <div class="product-title">💠 OBB MOD 4.4</div>
+            <div class="select-wrapper">
+                <select id="obb-select">
+                    <option value="" disabled selected>— PILIH DURASI OBB —</option>
+                    <option value="OBB MOD (30 Day)|50.000">🏷️ 30 DAY : Rp 50.000</option>
+                    <option value="OBB MOD (1 Season)|80.000">✨ 1 SEASON : Rp 80.000</option>
+                    <option value="OBB MOD (Permanent)|250.000">👑 PERMANENT : Rp 250.000</option>
+                </select>
+            </div>
+            <button onclick="checkout('obb-select')" class="btn-primary">Checkout</button>
+        </div>
+
+        <div class="card">
+            <span class="product-label">Visual Assist</span>
+            <div class="product-title">🌍 WALLHACK EDITION</div>
+            <div class="select-wrapper">
+                <select id="wh-select">
+                    <option value="" disabled selected>— PILIH SERVER & DURASI —</option>
+                    <option value="WH Global (1 Month)|150.000">🔵 GLOBAL: 1 MONTH | 150K</option>
+                    <option value="WH Global (Full Season)|280.000">🛡️ GLOBAL: FULL SEASON | 280K</option>
+                    <option value="WH Korea (1 Month)|130.000">🔴 KOREA: 1 MONTH | 130K</option>
+                    <option value="WH Korea (Full Season)|230.000">🛡️ KOREA: FULL SEASON | 230K</option>
+                </select>
+            </div>
+            <button onclick="checkout('wh-select')" class="btn-primary">Checkout</button>
+        </div>
+
+        <div class="card">
+            <span class="product-label">Visual Custom</span>
+            <div class="product-title">🎭 MOD SKIN V4.4</div>
+            <div class="select-wrapper">
+                <select id="skin-select">
+                    <option value="" disabled selected>— PILIH PAKET SKIN —</option>
+                    <option value="Mod Skin (1 Day)|25.000">⭐ 1 DAY : Rp 25.000</option>
+                    <option value="Mod Skin (3 Day)|40.000">⭐ 3 DAY : Rp 40.000</option>
+                    <option value="Mod Skin (7 Day)|50.000">⭐ 7 DAY : Rp 50.000</option>
+                    <option value="Mod Skin (30 Day)|80.000">⭐ 30 DAY : Rp 80.000</option>
+                    <option value="Mod Skin (Full Season)|150.000">⭐ FULL SEASON : Rp 150.000</option>
+                </select>
+            </div>
+            <button onclick="checkout('skin-select')" class="btn-primary">Checkout</button>
+        </div>
+    </div>
+
+    <div id="checkout-page" class="page">
+        <div class="header"><h1>INVOICE</h1></div>
+        <div class="receipt">
+            <div style="text-align: center; border-bottom: 2px dashed #ccc; padding-bottom: 15px; margin-bottom: 20px;">
+                <p style="font-weight: 900; font-size: 16px;">RANZSTORE PREMIUM</p>
+                <p id="invoice-date" style="font-size: 10px; margin-top: 5px; opacity: 0.6;"></p>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 13px;">
+                <span>ITEM:</span> <span id="res-item" style="font-weight: 800; text-align: right;"></span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 20px; font-weight: 900; border-top: 2px solid #000; padding-top: 15px; margin-top: 15px;">
+                <span>TOTAL:</span> <span id="res-price"></span>
+            </div>
+        </div>
+
+        <div class="pay-list">
+            <div class="pay-card"><div class="pay-logo dana">DANA</div><div class="pay-number">087872929545</div></div>
+            <div class="pay-card"><div class="pay-logo gopay">GOPAY</div><div class="pay-number">087872929545</div></div>
+            <div class="pay-card"><div class="pay-logo ovo">OVO</div><div class="pay-number">087872929545</div></div>
+        </div>
+
+        <a id="tg-link" href="#" target="_blank" class="btn-telegram">
+            Kirim Bukti Pembayaran ✈️
+        </a>
+
+        <button onclick="location.reload()" style="background:none; border:none; color:#64748b; width:100%; margin-top:20px; cursor:pointer; font-weight:700; text-transform:uppercase; font-size:11px;">Batal & Kembali</button>
+    </div>
+
+    <footer>RANZSTORE DIGITAL &copy; 2026</footer>
+</div>
+
+<script>
+    function checkout(id) {
+        const selectElement = document.getElementById(id);
+        if (selectElement.value === "") {
+            alert("Silahkan pilih harga terlebih dahulu!");
+            return;
+        }
+        
+        const data = selectElement.value.split('|');
+        const itemName = data[0];
+        const itemPrice = "Rp " + data[1];
+
+        document.getElementById('res-item').innerText = itemName;
+        document.getElementById('res-price').innerText = itemPrice;
+        document.getElementById('invoice-date').innerText = new Date().toLocaleString('id-ID');
+
+        const message = encodeURIComponent(
+            "Halo Admin, saya ingin membeli:\n\n" +
+            "Item: " + itemName + "\n" +
+            "Total: " + itemPrice + "\n\n" +
+            "Sertakan bukti transfer:"
+        );
+        document.getElementById('tg-link').href = "https://t.me/Ranzstorre?text=" + message;
+
+        document.getElementById('product-page').classList.remove('active');
+        document.getElementById('checkout-page').classList.add('active');
+        window.scrollTo(0,0);
+    }
+</script>
+
+</body>
+</html>
